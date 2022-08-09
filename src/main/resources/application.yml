@@ -1,0 +1,9 @@
+server:
+  port: 8080
+grpc:
+  port: 8081
+  enableReflection: true
+  client:
+    grpcItemService:
+      address: static://localhost:8081
+      negotiation-type: plaintext
