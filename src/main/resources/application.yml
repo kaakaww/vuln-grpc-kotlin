@@ -7,3 +7,7 @@ grpc:
     grpcItemService:
       address: static://localhost:8081
       negotiation-type: plaintext
+
+logging:
+  level:
+    root: info

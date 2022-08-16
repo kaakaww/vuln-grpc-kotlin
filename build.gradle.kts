@@ -7,8 +7,9 @@ import com.google.protobuf.gradle.protobuf
 import com.google.protobuf.gradle.protoc
 
 plugins {
-    id("com.google.protobuf") version "0.8.18"
     kotlin("jvm") version "1.7.0"
+    id("com.google.protobuf") version "0.8.18"
+    id("org.springframework.boot") version "2.7.1"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
@@ -26,29 +27,31 @@ val springBootVersion = extra["org.springframework.boot.version"]
 
 dependencies {
 
-    api("io.grpc:grpc-bom:$grpcVersion")
+    implementation("io.grpc:grpc-bom:$grpcVersion")
 
-    api(platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
 
-    api(kotlin("stdlib"))
+    implementation(kotlin("stdlib"))
 
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
 
-    api("io.grpc:grpc-stub:$grpcVersion")
-    api("io.grpc:grpc-protobuf:$grpcVersion")
-    api("com.google.protobuf:protobuf-java-util:$protobufVersion")
-    api("com.google.protobuf:protobuf-kotlin:$protobufVersion")
-    api("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
+    implementation("io.grpc:grpc-stub:$grpcVersion")
+    implementation("io.grpc:grpc-protobuf:$grpcVersion")
+    implementation("com.google.protobuf:protobuf-java-util:$protobufVersion")
+    implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
+    implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
 
-    api("io.grpc:grpc-netty-shaded:$grpcVersion")
+    // implementation("io.grpc:grpc-netty-shaded:$grpcVersion")
 
-    api("io.github.lognet:grpc-spring-boot-starter:4.8.0")
+    implementation("io.github.lognet:grpc-spring-boot-starter:4.8.0") /*{
+        exclude("io.grpc:grpc-netty-shaded")
+    }*/
 
-    // need to help test protobuf decoding independent of HTTP/2 support in ZAP
-    api("net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE")
-    api("org.springframework.boot:spring-boot-starter-web")
+    // needed to help test protobuf decoding independent of HTTP/2 support in ZAP
+    implementation("net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
-    // api("org.springframework.boot:spring-boot-starter-data-jpa")
+    // implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 }
 
 ktlint {
