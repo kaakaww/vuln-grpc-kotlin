@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package feature;
+package hawk;
 
 option java_package = "hawk";
 option java_outer_classname = "Items";
 
-// import "google/protobuf/empty.proto";
+import "google/protobuf/empty.proto";
 
 enum ItemType {
   SMALL = 0;
@@ -39,9 +39,15 @@ message GetItemsResponse {
   repeated Item items = 1;
 }
 
+message DeleteItemRequest {
+  int64 id = 1;
+}
+
 service ItemService {
   rpc AddItem(AddItemRequest) returns (AddItemResponse) {
   }
   rpc GetItems(GetItemsRequest) returns (GetItemsResponse){
+  }
+  rpc DeleteItem(DeleteItemRequest) returns (google.protobuf.Empty){
   }
 }

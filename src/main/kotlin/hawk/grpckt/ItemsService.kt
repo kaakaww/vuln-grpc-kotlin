@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong
 @GRpcService
 class ItemsService : ItemServiceGrpcKt.ItemServiceCoroutineImplBase() {
 
-    val counter = AtomicLong()
+    private val counter = AtomicLong()
     val items = ConcurrentHashMap<Long, Item>()
 
     override suspend fun addItem(request: AddItemRequest): AddItemResponse {

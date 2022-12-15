@@ -52,6 +52,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     // implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
 }
 
 ktlint {
@@ -113,4 +115,8 @@ protobuf {
                 it.descriptorSetOptions.includeSourceInfo = true
             }
     }
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
