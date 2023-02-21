@@ -1,12 +1,13 @@
 package hawk.model
 
-import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.Table
 
 @Entity
+@Table(name = "item", schema = "public")
 open class Item() {
     constructor(name: String, description: String) : this() {
         this.name = name
@@ -19,7 +20,6 @@ open class Item() {
         this.description = description
     }
 
-    @Column(nullable = false)
     var name: String? = null
     var description: String? = null
 
