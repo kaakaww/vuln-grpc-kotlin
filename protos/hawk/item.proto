@@ -32,21 +32,28 @@ message AddItemResponse {
   Item item = 1;
 }
 
-message GetItemsRequest {
-}
-
 message GetItemsResponse {
   repeated Item items = 1;
+}
+
+message GetItemResponse {
+  Item item = 1;
 }
 
 message DeleteItemRequest {
   int64 id = 1;
 }
 
+message GetItemRequest {
+  int64 id = 1;
+}
+
 service ItemService {
   rpc AddItem(AddItemRequest) returns (AddItemResponse) {
   }
-  rpc GetItems(GetItemsRequest) returns (GetItemsResponse){
+  rpc GetItems(google.protobuf.Empty) returns (GetItemsResponse){
+  }
+  rpc GetItem(GetItemRequest) returns (GetItemResponse){
   }
   rpc DeleteItem(DeleteItemRequest) returns (google.protobuf.Empty){
   }

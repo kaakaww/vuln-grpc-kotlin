@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgresql
+      - POSTGRES_USER=postgresql
+      - POSTGRES_PASSWORD=postgresql
+
+  vulngrpckotlin:
+    build: .
+    image: stackhawk/vulngrpckotlin:latest
+    container_name: vulngrpckotlin
+    environment:
+      SPRING_PROFILES_ACTIVE: postgresql
+    ports:
+      - "9000:9000"
+    links:
+      - db
+    depends_on:
+      - db

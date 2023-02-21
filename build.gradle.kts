@@ -34,13 +34,13 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("io.grpc:grpc-stub:$grpcVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
     implementation("com.google.protobuf:protobuf-java-util:$protobufVersion")
     implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
-
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.1.51")
     // implementation("io.grpc:grpc-netty-shaded:$grpcVersion")
 
     implementation("io.github.lognet:grpc-spring-boot-starter:4.8.0") /*{
@@ -54,6 +54,8 @@ dependencies {
     // implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+
+    runtimeOnly("org.postgresql:postgresql")
 }
 
 ktlint {
@@ -119,4 +121,8 @@ protobuf {
 
 tasks.test {
     useJUnitPlatform()
+}
+tasks.bootJar {
+    archiveBaseName.set("vuln-grpc-kotlin")
+    archiveVersion.set("0.1.0")
 }
