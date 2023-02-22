@@ -49,6 +49,7 @@ dependencies {
 
     // needed to help test protobuf decoding independent of HTTP/2 support in ZAP
     implementation("net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE")
+    implementation("net.devh:grpc-server-spring-boot-starter:2.14.0.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     // implementation("org.springframework.boot:spring-boot-starter-data-jpa")

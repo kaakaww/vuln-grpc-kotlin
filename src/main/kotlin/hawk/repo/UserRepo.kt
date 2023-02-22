@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository
 
 interface UserRepo : CrudRepository<User, Long> {
 
-    fun findByName(name: String?): User?
-    fun findAllByNameIsLike(name: String?): List<User?>?
+    fun findByName(name: String?): List<User>
+    fun findAllByNameIsLike(name: String?): List<User>
 }

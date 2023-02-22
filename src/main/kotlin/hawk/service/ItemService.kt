@@ -2,55 +2,28 @@ package hawk.service
 
 import hawk.model.Item
 import hawk.repo.ItemRepo
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.withContext
 
 class ItemService(private val itemRepo: ItemRepo) {
 
-    fun addItem(item: Item): Item? {
-        try {
-            return itemRepo.save(item)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun addItem(item: Item): Item = withContext(IO) {
+        itemRepo.save(item)
     }
-    fun deleteItem(id: Long) {
-        try {
-            return itemRepo.deleteById(id)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
+    suspend fun deleteItem(id: Long) = withContext(IO) {
+        itemRepo.deleteById(id)
     }
-    fun getItem(id: Long): Item? {
-        try {
-            return itemRepo.findById(id).get()
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getItem(id: Long): Item = withContext(IO) {
+        itemRepo.findById(id).get()
     }
-    fun getItems(): MutableIterable<Item>? {
-        try {
-            return itemRepo.findAll()
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getItems(): MutableIterable<Item> = withContext(IO) {
+        itemRepo.findAll()
     }
 
-    fun getByNameOrDescription(name: String?, description: String?): List<Item?>? {
-        try {
-            return itemRepo.findByNameOrDescription(name, description)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getByNameOrDescription(name: String?, description: String?): List<Item> = withContext(IO) {
+        itemRepo.findByNameOrDescription(name, description)
     }
-    fun getByNameContainingOrDescriptionContaining(name: String?, description: String?): List<Item?>? {
-        try {
-            return itemRepo.findByNameContainingOrDescriptionContaining(name, description)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getByNameContainingOrDescriptionContaining(name: String?, description: String?): List<Item> = withContext(IO) {
+        itemRepo.findByNameContainingOrDescriptionContaining(name, description)
     }
 }

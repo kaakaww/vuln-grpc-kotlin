@@ -8,18 +8,15 @@ option java_outer_classname = "Users";
 import "google/protobuf/empty.proto";
 
 
-message UserDetails{
+
+message User{
+  int64 id = 1;
   string name = 2;
   string description = 3;
 }
 
-message User{
-  int64 id = 1;
-  UserDetails details = 2;
-}
-
 message AddUserRequest {
-  UserDetails userDetails = 1;
+  User user = 1;
 }
 
 message AddUserResponse {
@@ -43,13 +40,27 @@ message GetUserRequest {
   int64 id = 1;
 }
 
+message GetUserByNameRequest {
+  string name = 1;
+}
+
+message GetUserBySearchTextRequest {
+  string text = 1;
+}
+
 service UserService {
   rpc AddUser(AddUserRequest) returns (AddUserResponse) {
   }
   rpc GetUsers(google.protobuf.Empty) returns (GetUsersResponse){
   }
+  rpc GetUsersByName(GetUserByNameRequest) returns (GetUsersResponse){
+  }
+  rpc GetUsersByNameIsLike(GetUserByNameRequest) returns (GetUsersResponse){
+  }
   rpc GetUser(GetUserRequest) returns (GetUserResponse){
   }
   rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty){
+  }
+  rpc GetUserBySearchText(GetUserBySearchTextRequest) returns (GetUsersResponse){
   }
 }

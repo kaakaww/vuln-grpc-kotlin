@@ -19,8 +19,8 @@ class UserSearchService(
         return session.doReturningWork<List<User?>> { connection: Connection ->
             val usersList: MutableList<User> = ArrayList<User>()
             // The wrong way
-            val query = "select id, name, description, tenant_id from public.user where name like '%" +
-                search.getSearchText() + "%'"
+            val query = "select id, name, description from public.user where name like '%" +
+                search.searchText + "%'"
             logger.log(Level.INFO, "SQL Query {0}", query)
             val rs = connection
                 .createStatement()

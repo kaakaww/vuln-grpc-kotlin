@@ -2,53 +2,26 @@ package hawk.service
 
 import hawk.model.User
 import hawk.repo.UserRepo
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.withContext
 
 class UserService(private val userRepo: UserRepo) {
-    fun addUser(user: User): User? {
-        try {
-            return userRepo.save(user)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun addUser(user: User): User = withContext(IO) {
+        userRepo.save(user)
     }
-    fun deleteUser(id: Long) {
-        try {
-            return userRepo.deleteById(id)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
+    suspend fun deleteUser(id: Long) = withContext(IO) {
+        userRepo.deleteById(id)
     }
-    fun getUser(id: Long): User? {
-        try {
-            return userRepo.findById(id).get()
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getUser(id: Long): User = withContext(IO) {
+        userRepo.findById(id).get()
     }
-    fun getUsers(): MutableIterable<User>? {
-        try {
-            return userRepo.findAll()
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getUsers(): MutableIterable<User> = withContext(IO) {
+        userRepo.findAll()
     }
-    fun getUserByName(name: String): User? {
-        try {
-            return userRepo.findByName(name)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getUserByName(name: String): List<User> = withContext(IO) {
+        userRepo.findByName(name)
     }
-    fun getAllUsersByNameIsLike(name: String): List<User?>? {
-        try {
-            return userRepo.findAllByNameIsLike(name)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-        return null
+    suspend fun getAllUsersByNameIsLike(name: String): List<User> = withContext(IO) {
+        userRepo.findAllByNameIsLike(name)
     }
 }

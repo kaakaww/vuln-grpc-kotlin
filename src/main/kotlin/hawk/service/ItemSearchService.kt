@@ -7,9 +7,9 @@ import java.util.logging.Level
 import java.util.logging.Logger
 import javax.persistence.EntityManager
 
-class SearchService(private val entityManager: EntityManager) {
+class ItemSearchService(private val entityManager: EntityManager) {
 
-    private val logger = Logger.getLogger(SearchService::class.java.name)
+    private val logger = Logger.getLogger(ItemSearchService::class.java.name)
 
     fun search(search: Search): List<Item?>? {
         val session = entityManager.unwrap(Session::class.java) as Session
@@ -17,7 +17,7 @@ class SearchService(private val entityManager: EntityManager) {
             val items: MutableList<Item> = ArrayList()
             // The wrong way
             val query = "select id, name, description from ITEM where description like '%" +
-                search.getSearchText() + "%'"
+                search.searchText + "%'"
             logger.log(Level.INFO, "SQL Query: {0}", query)
             val rs = connection
                 .createStatement()

@@ -48,6 +48,15 @@ message GetItemRequest {
   int64 id = 1;
 }
 
+message GetItemByNameRequest{
+  string name = 1;
+  string description = 2;
+}
+
+message GetItemBySearchTextRequest {
+  string text = 1;
+}
+
 service ItemService {
   rpc AddItem(AddItemRequest) returns (AddItemResponse) {
   }
@@ -56,5 +65,11 @@ service ItemService {
   rpc GetItem(GetItemRequest) returns (GetItemResponse){
   }
   rpc DeleteItem(DeleteItemRequest) returns (google.protobuf.Empty){
+  }
+  rpc GetByNameOrDescription(GetItemByNameRequest) returns (GetItemsResponse){
+  }
+  rpc GetByNameContainingOrDescriptionContaining(GetItemByNameRequest) returns (GetItemsResponse){
+  }
+  rpc GetUserBySearchText(GetItemBySearchTextRequest) returns (GetItemsResponse){
   }
 }

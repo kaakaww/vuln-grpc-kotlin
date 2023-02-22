@@ -2,8 +2,8 @@ package hawk
 
 import hawk.repo.ItemRepo
 import hawk.repo.UserRepo
+import hawk.service.ItemSearchService
 import hawk.service.ItemService
-import hawk.service.SearchService
 import hawk.service.UserSearchService
 import hawk.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,8 +24,8 @@ open class Config : WebMvcConfigurer {
     @Autowired lateinit var entityManager: EntityManager
 
     @Bean
-    open fun searchService(): SearchService? {
-        return SearchService(entityManager)
+    open fun iTemSearchService(): ItemSearchService? {
+        return ItemSearchService(entityManager)
     }
 
     @Bean
