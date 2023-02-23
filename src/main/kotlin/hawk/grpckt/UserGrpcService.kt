@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong
 @GRpcService
 class UserGrpcService(private val userService: UserService, private val userSearchService: UserSearchService) : UserServiceGrpcKt.UserServiceCoroutineImplBase() {
 
-    var users: ConcurrentHashMap<Long, hawk.Users.User> = ConcurrentHashMap()
+    var users: ConcurrentHashMap<Long, Users.User> = ConcurrentHashMap()
     private val counter = AtomicLong()
 
     override suspend fun addUser(request: Users.AddUserRequest): Users.AddUserResponse {

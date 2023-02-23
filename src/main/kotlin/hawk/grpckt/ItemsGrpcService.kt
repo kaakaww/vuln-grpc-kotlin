@@ -82,7 +82,7 @@ class ItemsGrpcService(private val itemService: ItemService, private val itemSea
 
     override suspend fun getByNameContainingOrDescriptionContaining(request: Items.GetItemByNameRequest): Items.GetItemsResponse {
         items = ConcurrentHashMap()
-        itemService.getByNameContainingOrDescriptionContaining(request.name, request.description).map { it ->
+        itemService.getByNameContainingOrDescriptionContaining(request.name, request.description).map {
             items[counter.incrementAndGet()] = it.id.let { id ->
                 Items.Item.newBuilder()
                     .setId(id!!)

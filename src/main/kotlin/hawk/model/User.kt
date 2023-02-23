@@ -7,7 +7,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "users", schema = "public")
 open class User() {
 
     constructor(name: String, description: String) : this() {

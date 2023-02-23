@@ -5,7 +5,20 @@ grpc:
     grpcItemService:
       address: static://localhost:9001
       negotiation-type: plaintext
+    grpcUserService:
+      address: static://localhost:9001
+      negotiation-type: plaintext
+server:
+  port: 8080
 
-logging:
-  level:
-    root: info
+spring:
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    driver-class-name: org.h2.Driver
+    password: password
+    username: sa
+    url: jdbc:h2:file:${PWD}/db/vulny-grpc.mv.db;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
