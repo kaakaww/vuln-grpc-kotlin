@@ -43,12 +43,6 @@ docker-compose build
 docker-compose up -d
 ```
 
-### Run
-
-```shell script
-.\gradlew.bat --no-daemon bootRun
-```
-
 ## Using the Application
 
 ### Reaching the App
