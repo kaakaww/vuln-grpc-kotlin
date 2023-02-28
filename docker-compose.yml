@@ -16,7 +16,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: postgresql
     ports:
-      - "9000:9000"
+      - "9001:9001"
     links:
       - db
     depends_on:

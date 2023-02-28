@@ -23,7 +23,6 @@ server:
         include-stacktrace: always
         whitelabel:
             enabled: false
-    port: 9000
 #    ssl:
 #        key-alias: JavaVulny
 #        key-store: classpath:javavulny.p12
