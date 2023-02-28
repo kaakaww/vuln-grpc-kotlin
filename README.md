@@ -43,8 +43,25 @@ docker-compose build
 docker-compose up -d
 ```
 
+### Run
+
+```shell script
+.\gradlew.bat --no-daemon bootRun
+```
+
+## Using the Application
+
+### Reaching the App
+
+Once the app starts up, you can reach it at [https://localhost:9001](https://localhost:9001).
+
+A good tool for gRPC testing locally is https://kreya.app/
+
+PS: You'll need Postgres for local development. 
+
 ## Testing
 
 See [GrpcProxyClientTest.kt](src/test/kotlin/hawk/test/GrpcProxyClientTest.kt) 
 for an example of proxying gRPC traffic through hawkscan/ZAP. 
+
 
