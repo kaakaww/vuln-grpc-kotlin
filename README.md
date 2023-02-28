@@ -2,15 +2,6 @@
 
 For testing hawkscan GRPC and protobuf capabilities.
 
-‼️**NOTE** ‼️
-**There are no vulnerabilities in this project yet** only a basic gRPC service 
-springboot setup. 
-
-Things to be added
-1. Postgresql backend for the [ItemsService](src/main/kotlin/hawk/grpckt/ItemsService.kt)
-2. docker-compose setup for build and running the postgres DB
-3. Add a Search method to the ItemService with and SQLi vulnerability.
-
 
 ## Development
 
@@ -40,8 +31,31 @@ java -jar build/libs/vuln-grpc-kotlin.jar
 ./gradlew bootRun
 ```
 
+## Building and Running in Docker
+
+### Build
+```shell script
+docker-compose build
+```
+
+### Run docker
+```shell script
+docker-compose up -d
+```
+
+## Using the Application
+
+### Reaching the App
+
+Once the app starts up, you can reach it at [https://localhost:9001](https://localhost:9001).
+
+A good tool for gRPC testing locally is https://kreya.app/
+
+PS: You'll need Postgres for local development. 
+
 ## Testing
 
 See [GrpcProxyClientTest.kt](src/test/kotlin/hawk/test/GrpcProxyClientTest.kt) 
 for an example of proxying gRPC traffic through hawkscan/ZAP. 
+
 

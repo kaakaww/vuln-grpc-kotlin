@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package hawk;
+
+option java_package = "hawk";
+option java_outer_classname = "Users";
+
+import "google/protobuf/empty.proto";
+
+
+
+message User{
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message AddUserRequest {
+  User user = 1;
+}
+
+message AddUserResponse {
+  User user = 1;
+}
+
+
+message GetUsersResponse {
+  repeated User user = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  int64 id = 1;
+}
+
+message GetUserRequest {
+  int64 id = 1;
+}
+
+message GetUserByNameRequest {
+  string name = 1;
+}
+
+message GetUserBySearchTextRequest {
+  string text = 1;
+}
+
+service UserService {
+  rpc AddUser(AddUserRequest) returns (AddUserResponse) {
+  }
+  rpc GetUsers(google.protobuf.Empty) returns (GetUsersResponse){
+  }
+  rpc GetUsersByName(GetUserByNameRequest) returns (GetUsersResponse){
+  }
+  rpc GetUsersByNameIsLike(GetUserByNameRequest) returns (GetUsersResponse){
+  }
+  rpc GetUser(GetUserRequest) returns (GetUserResponse){
+  }
+  rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty){
+  }
+  rpc GetUserBySearchText(GetUserBySearchTextRequest) returns (GetUsersResponse){
+  }
+}

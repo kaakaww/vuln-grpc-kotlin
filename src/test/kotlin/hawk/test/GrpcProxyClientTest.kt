@@ -1,5 +1,6 @@
 package hawk.test
 
+import com.google.protobuf.Empty
 import com.google.protobuf.util.JsonFormat
 import hawk.ItemServiceGrpc
 import hawk.Items
@@ -19,7 +20,6 @@ class GrpcProxyClientTest {
     @Disabled
     @Test
     fun testGrpcClientProxy() {
-
         val channel = Grpc
             .newChannelBuilder("localhost:9001", InsecureChannelCredentials.create())
             .proxyDetector { targetServerAddress ->
@@ -42,7 +42,7 @@ class GrpcProxyClientTest {
         )
         println(JsonFormat.printer().print(resp))
 
-        val resp2 = itemSvcClient.getItems(Items.GetItemsRequest.newBuilder().build())
+        val resp2 = itemSvcClient.getItems(Empty.getDefaultInstance())
         println(JsonFormat.printer().print(resp2))
     }
 }

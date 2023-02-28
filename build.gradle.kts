@@ -34,26 +34,26 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("io.grpc:grpc-stub:$grpcVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
     implementation("com.google.protobuf:protobuf-java-util:$protobufVersion")
     implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
-
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.1.51")
     // implementation("io.grpc:grpc-netty-shaded:$grpcVersion")
 
     implementation("io.github.lognet:grpc-spring-boot-starter:4.8.0") /*{
         exclude("io.grpc:grpc-netty-shaded")
     }*/
-
     // needed to help test protobuf decoding independent of HTTP/2 support in ZAP
     implementation("net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE")
+    implementation("net.devh:grpc-server-spring-boot-starter:2.14.0.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
-    // implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
     testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+
+    runtimeOnly("org.postgresql:postgresql")
 }
 
 ktlint {
@@ -119,4 +119,8 @@ protobuf {
 
 tasks.test {
     useJUnitPlatform()
+}
+tasks.bootJar {
+    archiveBaseName.set("vuln-grpc-kotlin")
+    archiveVersion.set("0.1.0")
 }

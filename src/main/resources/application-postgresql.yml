@@ -1,0 +1,57 @@
+logging:
+    level:
+        org:
+            baeldung: info
+            hibernate:
+                SQL: debug
+                type: trace
+                type.descriptor.sql: trace
+            springframework: info
+management:
+    endpoints:
+        jmx:
+            exposure:
+                include: '*'
+        web:
+            exposure:
+                include: '*'
+payload:
+    count: 20
+    startSize: 3096
+server:
+    error:
+        include-stacktrace: always
+        whitelabel:
+            enabled: false
+    port: 9000
+#    ssl:
+#        key-alias: JavaVulny
+#        key-store: classpath:javavulny.p12
+#        key-store-password: stackhawk
+#        key-store-type: PKCS12
+spring:
+    datasource:
+        driverClassName: org.postgresql.Driver
+        password: postgresql
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgresql
+    jpa:
+        database: POSTGRESQL
+        generate-ddl: true
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQL81Dialect
+                format_sql: false
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
+                use_sql_comments: false
+        show_sql: false
+    sql:
+        init:
+            platform: postgres
+springdoc:
+    api-docs:
+        path: /openapi

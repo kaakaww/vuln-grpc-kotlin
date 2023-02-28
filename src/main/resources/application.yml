@@ -5,7 +5,32 @@ grpc:
     grpcItemService:
       address: static://localhost:9001
       negotiation-type: plaintext
+    grpcUserService:
+      address: static://localhost:9001
+      negotiation-type: plaintext
+server:
+  port: 8080
 
-logging:
-  level:
-    root: info
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: postgresql
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgresql
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL81Dialect
+        format_sql: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        use_sql_comments: false
+    show_sql: false
+  sql:
+    init:
+      platform: postgres
