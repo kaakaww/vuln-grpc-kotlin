@@ -1,3 +1,13 @@
+grpc:
+    port: 9001
+    enableReflection: true
+    client:
+        grpcItemService:
+            address: static://localhost:9001
+            negotiation-type: plaintext
+        grpcUserService:
+            address: static://localhost:9001
+            negotiation-type: plaintext
 logging:
     level:
         org:
@@ -23,6 +33,7 @@ server:
         include-stacktrace: always
         whitelabel:
             enabled: false
+    port: 8081
 #    ssl:
 #        key-alias: JavaVulny
 #        key-store: classpath:javavulny.p12
