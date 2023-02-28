@@ -23,7 +23,6 @@ server:
         include-stacktrace: always
         whitelabel:
             enabled: false
-    port: 9000
 #    ssl:
 #        key-alias: JavaVulny
 #        key-store: classpath:javavulny.p12
@@ -39,7 +38,7 @@ spring:
         database: POSTGRESQL
         generate-ddl: true
         hibernate:
-            ddl-auto: create-drop
+            ddl-auto: update
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQL81Dialect

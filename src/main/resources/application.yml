@@ -1,12 +1,12 @@
 grpc:
-  port: 9001
+  port: 9000
   enableReflection: true
   client:
     grpcItemService:
-      address: static://localhost:9001
+      address: static://localhost:9000
       negotiation-type: plaintext
     grpcUserService:
-      address: static://localhost:9001
+      address: static://localhost:9000
       negotiation-type: plaintext
 server:
   port: 8080
