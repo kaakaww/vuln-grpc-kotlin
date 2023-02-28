@@ -56,7 +56,7 @@ open class Application {
                 }
                 println(String.format("Users in DB %d", userRepo.count()))
                 if (userRepo.count() == 0L) {
-                    userRepo.findAll().forEach { user: User -> println(String.format("item: %s", user.name)) }
+                    userRepo.findAll().forEach { user: User -> println(String.format("user: %s", user.name)) }
                     Stream.of(1, 2, 3)
                         .forEach { i: Int? ->
                             println(String.format("Adding user%d", i))
@@ -70,11 +70,11 @@ open class Application {
                     userRepo.save(User("user", "The auth user"))
                     Stream.of(4, 5, 6)
                         .forEach { i: Int? ->
-                            println(String.format("Adding item%d", i))
+                            println(String.format("Adding user%d", i))
                             userRepo.save(
                                 User(
                                     String.format("user%d", i),
-                                    String.format("we have the best users, users%d", i)
+                                    String.format("we have the best users, user%d", i)
                                 )
                             )
                         }

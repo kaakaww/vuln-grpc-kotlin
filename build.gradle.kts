@@ -46,7 +46,6 @@ dependencies {
     implementation("io.github.lognet:grpc-spring-boot-starter:4.8.0") /*{
         exclude("io.grpc:grpc-netty-shaded")
     }*/
-    implementation("com.h2database:h2")
     // needed to help test protobuf decoding independent of HTTP/2 support in ZAP
     implementation("net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE")
     implementation("net.devh:grpc-server-spring-boot-starter:2.14.0.RELEASE")

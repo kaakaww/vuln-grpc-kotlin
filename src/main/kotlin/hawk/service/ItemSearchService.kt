@@ -29,8 +29,16 @@ class ItemSearchService(private val entityManager: EntityManager) {
                 statement.setString(1, "%" + search.getSearchText() + "%");
                 LOGGER.log(Level.INFO, "SQL Query {0}",  statement);
                 ResultSet rs = statement.executeQuery();
-                */while (rs.next()) {
-                items.add(Item(id = rs.getLong("id"), name = rs.getString("name"), description = rs.getString("description")))
+            */
+
+            while (rs.next()) {
+                items.add(
+                    Item(
+                        id = rs.getLong("id"),
+                        name = rs.getString("name"),
+                        description = rs.getString("description")
+                    )
+                )
             }
             rs.close()
             items

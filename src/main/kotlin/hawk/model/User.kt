@@ -11,20 +11,20 @@ import javax.persistence.Table
 open class User() {
 
     constructor(name: String, description: String) : this() {
-        this.name = name
-        this.description = description
+        name.also { this.name = it }
+        description.also { this.description = it }
     }
 
     constructor(id: Long, name: String, description: String) : this() {
-        this.id = id
-        this.name = name
-        this.description = description
+        id.also { this.id = it }
+        name.also { this.name = it }
+        description.also { this.description = it }
     }
 
-    var name: String? = null
-    var description: String? = null
+    open var name: String? = null
+    open var description: String? = null
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long? = null
+    open var id: Long? = null
 }

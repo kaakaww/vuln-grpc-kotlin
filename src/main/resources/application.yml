@@ -12,13 +12,25 @@ server:
   port: 8080
 
 spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: postgresql
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgresql
   jpa:
+    database: POSTGRESQL
     generate-ddl: true
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
-  datasource:
-    driver-class-name: org.h2.Driver
-    password: password
-    username: sa
-    url: jdbc:h2:file:${PWD}/db/vulny-grpc.mv.db;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL81Dialect
+        format_sql: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        use_sql_comments: false
+    show_sql: false
+  sql:
+    init:
+      platform: postgres
