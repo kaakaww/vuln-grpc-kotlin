@@ -70,6 +70,6 @@ service ItemService {
   }
   rpc GetByNameContainingOrDescriptionContaining(GetItemByNameRequest) returns (GetItemsResponse){
   }
-  rpc GetUserBySearchText(GetItemBySearchTextRequest) returns (GetItemsResponse){
+  rpc GetItemBySearchText(GetItemBySearchTextRequest) returns (GetItemsResponse){
   }
 }

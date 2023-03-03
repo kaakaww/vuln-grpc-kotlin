@@ -116,7 +116,7 @@ class ItemsGrpcService(private val itemService: ItemService, private val itemSea
         return Items.GetItemsResponse.newBuilder().addAllItems(items.values).build()
     }
 
-    override suspend fun getUserBySearchText(request: Items.GetItemBySearchTextRequest): Items.GetItemsResponse {
+    override suspend fun getItemBySearchText(request: Items.GetItemBySearchTextRequest): Items.GetItemsResponse {
         items = ConcurrentHashMap()
         itemSearchService.search(
             Search(

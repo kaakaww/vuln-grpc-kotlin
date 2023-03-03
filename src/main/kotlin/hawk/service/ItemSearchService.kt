@@ -14,6 +14,7 @@ class ItemSearchService(private val entityManager: EntityManager) {
     fun search(search: Search): List<Item?>? {
         val session = entityManager.unwrap(Session::class.java) as Session
         return session.doReturningWork<List<Item?>> { connection ->
+            logger.info("Search text : $search")
             val items: MutableList<Item> = ArrayList()
             // The wrong way
             val query = "select id, name, description from ITEM where description like '%" +
