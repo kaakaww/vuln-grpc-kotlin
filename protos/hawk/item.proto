@@ -20,7 +20,7 @@ message ItemDetails {
 }
 
 message Item {
-  int64 id = 1;
+  int32 id = 1;
   ItemDetails details = 2;
 }
 
@@ -41,11 +41,11 @@ message GetItemResponse {
 }
 
 message DeleteItemRequest {
-  int64 id = 1;
+  int32 id = 1;
 }
 
 message GetItemRequest {
-  int64 id = 1;
+  int32 id = 1;
 }
 
 message GetItemByNameRequest{

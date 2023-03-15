@@ -9,7 +9,6 @@ import java.util.logging.Logger
 import javax.persistence.EntityManager
 
 class UserSearchService(
-
     private val entityManager: EntityManager
 ) {
     private val logger = Logger.getLogger(UserSearchService::class.java.name)

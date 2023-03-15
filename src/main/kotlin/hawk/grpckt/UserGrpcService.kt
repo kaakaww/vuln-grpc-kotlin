@@ -7,11 +7,11 @@ import hawk.model.Search
 import hawk.model.User
 import hawk.service.UserSearchService
 import hawk.service.UserService
-import org.lognet.springboot.grpc.GRpcService
+import net.devh.boot.grpc.server.service.GrpcService
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicLong
 
-@GRpcService
+@GrpcService
 class UserGrpcService(private val userService: UserService, private val userSearchService: UserSearchService) : UserServiceGrpcKt.UserServiceCoroutineImplBase() {
 
     var users: ConcurrentHashMap<Long, Users.User> = ConcurrentHashMap()
