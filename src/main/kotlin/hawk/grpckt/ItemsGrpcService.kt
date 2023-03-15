@@ -7,11 +7,11 @@ import hawk.model.Item
 import hawk.model.Search
 import hawk.service.ItemSearchService
 import hawk.service.ItemService
-import org.lognet.springboot.grpc.GRpcService
+import net.devh.boot.grpc.server.service.GrpcService
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicLong
 
-@GRpcService
+@GrpcService
 class ItemsGrpcService(private val itemService: ItemService, private val itemSearchService: ItemSearchService) :
     ItemServiceGrpcKt.ItemServiceCoroutineImplBase() {
 
@@ -100,14 +100,14 @@ class ItemsGrpcService(private val itemService: ItemService, private val itemSea
 
     override suspend fun getByNameOrDescription(request: Items.GetItemByNameRequest): Items.GetItemsResponse {
         items = ConcurrentHashMap()
-        itemService.getByNameOrDescription(request.name, request.description).map {
-            items[counter.incrementAndGet()] = it.id.let { id ->
+        itemSearchService.getByNameOrDescription(request.name, request.description)?.map {
+            items[counter.incrementAndGet()] = it?.id.let { id ->
                 Items.Item.newBuilder()
                     .setId(id!!)
                     .setDetails(
                         Items.ItemDetails.newBuilder()
-                            .setName(it.name)
-                            .setDescription(it.description)
+                            .setName(it?.name)
+                            .setDescription(it?.description)
                             .build()
                     )
                     .build()

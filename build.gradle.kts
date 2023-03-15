@@ -43,7 +43,7 @@ dependencies {
     runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.1.51")
     // implementation("io.grpc:grpc-netty-shaded:$grpcVersion")
 
-    implementation("io.github.lognet:grpc-spring-boot-starter:4.8.0") /*{
+    implementation("net.devh:grpc-server-spring-boot-starter:2.14.0.RELEASE") /*{
         exclude("io.grpc:grpc-netty-shaded")
     }*/
     // needed to help test protobuf decoding independent of HTTP/2 support in ZAP
@@ -53,7 +53,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
 
-    runtimeOnly("org.postgresql:postgresql")
+    implementation("org.postgresql:postgresql")
 }
 
 ktlint {

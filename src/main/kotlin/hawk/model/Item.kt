@@ -14,7 +14,7 @@ open class Item() {
         description.also { this.description = it }
     }
 
-    constructor(id: Long, name: String?, description: String?) : this() {
+    constructor(id: Int, name: String?, description: String?) : this() {
         id.also { this.id = it }
         name.also { this.name = it }
         description.also { this.description = it }
@@ -25,5 +25,5 @@ open class Item() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    open var id: Long? = null
+    open var id: Int? = null
 }
