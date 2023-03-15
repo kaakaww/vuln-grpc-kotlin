@@ -1,6 +1,7 @@
 grpc:
-    port: 9001
-    enableReflection: true
+    server:
+        port: 9001
+        reflection-service-enabled: true
     client:
         grpcItemService:
             address: static://localhost:9001
@@ -8,37 +9,12 @@ grpc:
         grpcUserService:
             address: static://localhost:9001
             negotiation-type: plaintext
-logging:
-    level:
-        org:
-            baeldung: info
-            hibernate:
-                SQL: debug
-                type: trace
-                type.descriptor.sql: trace
-            springframework: info
-management:
-    endpoints:
-        jmx:
-            exposure:
-                include: '*'
-        web:
-            exposure:
-                include: '*'
-payload:
-    count: 20
-    startSize: 3096
 server:
     error:
         include-stacktrace: always
         whitelabel:
             enabled: false
     port: 8081
-#    ssl:
-#        key-alias: JavaVulny
-#        key-store: classpath:javavulny.p12
-#        key-store-password: stackhawk
-#        key-store-type: PKCS12
 spring:
     datasource:
         driverClassName: org.postgresql.Driver
@@ -62,6 +38,3 @@ spring:
     sql:
         init:
             platform: postgres
-springdoc:
-    api-docs:
-        path: /openapi

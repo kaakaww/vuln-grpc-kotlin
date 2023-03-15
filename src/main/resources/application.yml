@@ -1,6 +1,7 @@
 grpc:
-  port: 9001
-  enableReflection: true
+  server:
+    port: 9001
+    reflection-service-enabled: true
   client:
     grpcItemService:
       address: static://localhost:9001
