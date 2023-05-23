@@ -1,0 +1,26 @@
+app:
+  applicationId: ${APP_ID:0119a53c-f2d6-438a-bd21-8795bca6ba15}
+  env: ${APP_ENV:Development}
+  host: ${APP_HOST:https://localhost:9001}
+  grpcConf:
+    path: localhost:9001
+    keystoreFilePath: /Users/austinpearigen/Work/kaakaww/vuln-grpc-kotlin/src/main/resources/client-keystore.p12
+    keystorePassword: austin
+#    customVariables:
+#      - field: name
+#        values:
+#          - something
+hawk:
+  scan:
+    concurrentRequests: 1
+#    requestDelayMillis: 250
+#    customVariables:
+#      - field: name
+#        values:
+#          - "AustinsCustomName"
+#      - field: type
+#        values:
+#          - "NOTVALID"
+#hawk:
+#  scan:
+#    requestDelayMillis: 5

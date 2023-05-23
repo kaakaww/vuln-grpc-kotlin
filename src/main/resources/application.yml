@@ -2,15 +2,21 @@ grpc:
   server:
     port: 9001
     reflection-service-enabled: true
-  client:
-    grpcItemService:
-      address: static://localhost:9001
-      negotiation-type: plaintext
-    grpcUserService:
-      address: static://localhost:9001
-      negotiation-type: plaintext
+    security:
+      enabled: true
+      key-store: classpath:keystore.p12
+      key-store-password: austin
+      key-store-format: PKCS12
+      client-auth: require
+      trust-store-format: PKCS12
+      trust-store: classpath:truststore.p12
+      trust-store-password: austin
 server:
   port: 8080
+
+logging:
+  level:
+    root: debug
 
 spring:
   datasource:

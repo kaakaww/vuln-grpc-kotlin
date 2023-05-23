@@ -2,13 +2,6 @@ grpc:
     server:
         port: 9001
         reflection-service-enabled: true
-    client:
-        grpcItemService:
-            address: static://localhost:9001
-            negotiation-type: plaintext
-        grpcUserService:
-            address: static://localhost:9001
-            negotiation-type: plaintext
 server:
     error:
         include-stacktrace: always
